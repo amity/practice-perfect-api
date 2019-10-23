@@ -1,0 +1,22 @@
+{
+  "name": "19f-practiceperfect-api",
+  "version": "1.0.0",
+  "description": "API for PracticePerfect app",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dartmouth-cs98/19f-practiceperfect-api.git"
+  },
+  "author": "Abby Chen, Sophie Debs, Sean Hawkins, Anna Matusewicz",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dartmouth-cs98/19f-practiceperfect-api/issues"
+  },
+  "homepage": "https://github.com/dartmouth-cs98/19f-practiceperfect-api#readme",
+  "dependencies": {
+    "hapi": "^18.1.0"
+  }
+}
