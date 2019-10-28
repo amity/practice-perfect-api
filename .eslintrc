@@ -4,6 +4,7 @@
         "sourceType": "module"
     },
     "rules": {
-        "semi": "warn"
+        "semi": "warn",
+        "no-multiple-empty-lines": "error"
     }
 }
