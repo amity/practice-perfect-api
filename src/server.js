@@ -1,7 +1,8 @@
 'use strict';
 
-const PORT = 7674;
+const endpoints = require('./features');
 
+const PORT = 7674;
 let server;
 
 const start = async () => {
@@ -17,6 +18,8 @@ const registerRoutes = () => {
         path: '/',
         handler: (req, h) => 'Hello, world!'
     });
+
+    server.route(endpoints);
 };
 
 start();
