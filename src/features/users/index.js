@@ -6,7 +6,7 @@ const PATH = '/users';
 
 const findById = () => ({
     method: 'GET',
-    path: PATH,
+    path: PATH + '/{id}',
     handler: ({id}, h) => Controller.findById(id)
 });
 
@@ -24,7 +24,7 @@ const create = () => ({
 
 const deleteById = () => ({
     method: 'DELETE',
-    path: PATH,
+    path: PATH + '/{id}',
     handler: ({id}, h) => Controller.deleteById(id)
 });
 
