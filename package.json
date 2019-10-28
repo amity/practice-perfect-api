@@ -13,5 +13,9 @@
   "author": "Abby Chen, Sophie Debs, Sean Hawkins, Anna Matusewicz",
   "dependencies": {
     "hapi": "^18.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.0.1"
   }
 }
