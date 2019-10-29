@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "API for PracticePerfect app",
   "scripts": {
+    "lint": "eslint .",
     "start": "node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -13,5 +14,9 @@
   "author": "Abby Chen, Sophie Debs, Sean Hawkins, Anna Matusewicz",
   "dependencies": {
     "hapi": "^18.1.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb": "^18.0.1"
   }
 }

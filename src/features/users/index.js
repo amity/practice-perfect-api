@@ -4,30 +4,30 @@ const Controller = require('./controller');
 
 const PATH = '/users';
 
-const findById = () => ({
+const findById = {
     method: 'GET',
     path: PATH + '/{id}',
     handler: ({id}, h) => Controller.findById(id)
-});
+};
 
-const list = () => ({
+const list = {
     method: 'GET',
     path: PATH,
     handler: (req, h) => Controller.list()
-});
+};
 
-const create = () => ({
+const create = {
     method: 'POST',
     path: PATH,
     handler: ({id, name}, h) => Controller.create(id, name)
-});
+};
 
-const deleteById = () => ({
+const deleteById = {
     method: 'DELETE',
     path: PATH + '/{id}',
     handler: ({id}, h) => Controller.deleteById(id)
-});
-
-module.exports = {
-    findById, list, create, deleteById
 };
+
+module.exports = [
+    findById, list, create, deleteById
+];
