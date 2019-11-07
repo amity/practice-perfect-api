@@ -1,26 +1,32 @@
 'use strict';
 
+const Hapi = require('hapi');
+
 const endpoints = require('./features');
 
-const PORT = 7674;
-let server;
+const PORT = process.env.PORT || 7674;
+
+const server = Hapi.server({
+  port: PORT
+});
+
+server.route({
+    method: 'GET',
+    path: '/',
+    handler: (req, h) => 'Hello, world!'
+});
+
+server.route(endpoints);
 
 const start = async () => {
-    const Hapi = require('hapi');
-    server = Hapi.server({ port: PORT });
+  try {
     await server.start();
-    console.log(`Running on port ${PORT}!`); // eslint-disable-line no-console
-};
-
-const registerRoutes = () => {
-    server.route({
-        method: 'GET',
-        path: '/',
-        handler: (req, h) => 'Hello, world!'
-    });
-
-    server.route(endpoints);
+  }
+  catch (e) {
+    console.log(e); // eslint-disable-line no-console
+    process.exit(418);
+  }
+  console.log('Server running at:', server.info.uri); // eslint-disable-line no-console
 };
 
 start();
-registerRoutes();

@@ -1,7 +1,6 @@
 'use strict';
 
 const findById = (id) => {
-    console.log(id);
     return {
         id,
         name: "Superunknown",
