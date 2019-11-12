@@ -14,6 +14,8 @@ Each table entry is one song, with the following fields:
 | Top Score    | Integer     | | The highest possible score for the song.
 | Deleted      | Boolean     | Not Nullable, Default: False | True if the song should be inaccessible by users (entry remains in DB on deletion).
 
+Index on Deleted -> Level, to easily fetch all unlocked songs for the user.
+
 ### Users
 Each table entry is one user, with the following fields:
 
@@ -28,7 +30,7 @@ Each table entry is one user, with the following fields:
 | Level       | Integer     | | The level of songs the user has unlocked.
 | Deleted     | Boolean     | Not Nullable, Default: False | True if the user has deleted their account (entry remains in DB on deletion).
 
-Indices on username and on email, for login purposes. Username is not used as primary key, as they could be alterable.
+Indices on Username and on Email, for login purposes. The reason usernames are not used as the primary key is that they should be alterable.
 
 ### Scores
 Each table entry is one user, with the following fields:
