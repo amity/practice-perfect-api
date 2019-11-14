@@ -1,10 +1,11 @@
 version: 2
 jobs:
-  build:
+  build_and_lint:
     docker:
       - image: circleci/node:10.16.3
     steps:
       - checkout
+      - run: npm install
       - run: npm run lint
       # TEST
   deploy:
@@ -21,10 +22,10 @@ workflows:
   version: 2
   build_and_deploy:
     jobs:
-      - build
+      - build_and_lint
       - deploy:
           requires:
-            - build
+            - build_and_lint
           filters:
             branches:
               only: master
