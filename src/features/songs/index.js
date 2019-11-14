@@ -7,7 +7,7 @@ const PATH = '/songs';
 const findById = {
     method: 'GET',
     path: PATH + '/{id}',
-    handler: ({params}, h) => Controller.findById(params)
+    handler: ({params: {id}}, h) => Controller.findById(id)
 };
 
 const list = {
@@ -19,13 +19,13 @@ const list = {
 const create = {
     method: 'POST',
     path: PATH,
-    handler: ({id, name, artist}, h) => Controller.create(id, name)
+    handler: ({payload}, h) => Controller.create(payload)
 };
 
 const deleteById = {
     method: 'DELETE',
     path: PATH + '/{id}',
-    handler: ({id}, h) => Controller.deleteById(id)
+    handler: ({params: {id}}, h) => Controller.deleteById(id)
 };
 
 module.exports = [
