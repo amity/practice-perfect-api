@@ -1,3 +1,9 @@
+# Setup and Management
+To set up the local DB to run on your computer, run `yarn db:init`.
+You should now be able to connect with `yarn db:connect`; you can connect to the remote DB with `yarn db:connect:production`.
+
+To bring your local DB up-to-date, run `yarn db:migrate`, followed by `yarn db:seed` to populate it with sample data. If you need to reset your local database (likely because of retroactive editing of a migration after running it), you can do so with `yarn db:reset`.
+
 # Tables
 
 ### Songs
