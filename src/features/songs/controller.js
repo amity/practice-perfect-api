@@ -33,5 +33,8 @@ const deleteById = (id) => ({
 });
 
 module.exports = {
-    findById, list, create, deleteById
+    findById,
+    list,
+    create,
+    deleteById
 };
