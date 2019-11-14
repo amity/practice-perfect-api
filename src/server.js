@@ -13,7 +13,7 @@ const server = Hapi.server({
 server.route({
     method: 'GET',
     path: '/',
-    handler: (req, h) => 'Hello, world!'
+    handler: (req, h) => 'Hello, losers!'
 });
 
 server.route(endpoints);

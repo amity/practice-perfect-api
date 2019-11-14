@@ -10,14 +10,16 @@ const findById = (id) => {
 
 const list = () => [
     {
-        id: 1234,
+        id: 1,
         name: "Superunknown",
-        artist: "Soundgarden"
+        artist: "Soundgarden",
+        level: 1
     },
     {
-        id: 5678,
+        id: 2,
         name: "Fences",
-        artist: "Paramore"
+        artist: "Paramore",
+        level: 2
     }
 ];
 
