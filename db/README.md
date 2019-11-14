@@ -1,3 +1,9 @@
+# Setup and Management
+To set up the local DB to run on your computer, run `yarn db:init`.
+You should now be able to connect with `yarn db:connect`; you can connect to the remote DB with `yarn db:connect:production`.
+
+To bring your local DB up-to-date, run `yarn db:migrate`, followed by `yarn db:seed` to populate it with sample data. If you need to reset your local database (likely because of retroactive editing of a migration after running it), you can do so with `yarn db:reset`.
+
 # Tables
 
 ### Songs
@@ -37,7 +43,7 @@ Each table entry is one user, with the following fields:
 
 | Field       | Type        | Constraints | Description |
 | ----------- | ----------- | ----------- | ----------- |
-| ID          | Integer     | Not Nullable, Unique, Primary Key | ID in table, equals the User ID appended with the Song ID and the mode ID. |
+| ID          | Integer     | Not Nullable, Unique, Primary Key | Auto-generated ID in table |
 | User        | Integer     | Not Nullable, Foreign Key: Users->ID | The ID of the user who set the score.
 | Song        | Integer     | Not Nullable, Foreign Key: Songs->ID | The ID of the song that the score is for.
 | Score       | Integer     | Not Nullable | The highest score for a given user and song.
