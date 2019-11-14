@@ -6,14 +6,11 @@
     "lint": "eslint .",
     "start": "nodemon src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-
     "db:connect": "psql -d practice-perfect-db -h localhost",
     "db:connect:production": "psql -h 34.67.115.95 -U postgres",
-
     "db:migrate": "knex migrate:latest",
     "db:seed": "knex seed:run",
     "db:reset": "knex migrate:rollback --all",
-
     "db:init": "createdb practice-perfect-db",
     "db:delete": "dropdb practice-perfect-db"
   },
