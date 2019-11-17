@@ -1,9 +1,8 @@
 exports.seed = function(knex) {
-  return knex('users').del()
+  return knex('scores').del()
     .then(function () {
-      return knex('users').insert([
+      return knex('scores').insert([
         {
-          id: 1,
           user: 1,
           song: 1,
           score: 98,
@@ -12,7 +11,6 @@ exports.seed = function(knex) {
           deleted: false
         },
         {
-          id: 2,
           user: 1,
           song: 2,
           score: 98,
@@ -21,7 +19,6 @@ exports.seed = function(knex) {
           deleted: false
         },
         {
-          id: 3,
           user: 2,
           song: 1,
           score: 108,

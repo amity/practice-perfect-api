@@ -1,7 +1,7 @@
 'use strict';
 
 const base = {
-  client: 'postgresql',
+  client: 'pg',
   migrations: {
     directory: './db/migrations',
   },
