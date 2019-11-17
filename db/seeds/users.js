@@ -3,7 +3,6 @@ exports.seed = function(knex) {
     .then(function () {
       return knex('users').insert([
         {
-          id: 1,
           username: 'soph_iest',
           email: 'sophie.a.debs@gmail.com',
           password: 'cs98',
@@ -13,7 +12,6 @@ exports.seed = function(knex) {
           deleted: false
         },
         {
-          id: 2,
           username: 'abigailychen',
           email: 'abigailychen@gmail.com',
           password: 'cs98',
@@ -23,7 +21,6 @@ exports.seed = function(knex) {
           deleted: false
         },
         {
-          id: 3,
           username: 'seandartmouth',
           email: 'sean.k.hawkins.20@gmail.com',
           password: 'cs98',
@@ -33,7 +30,6 @@ exports.seed = function(knex) {
           deleted: false
         },
         {
-          id: 4,
           username: 'a-matusewicz',
           email: 'anna.d.mat@gmail.com',
           password: 'cs98',
