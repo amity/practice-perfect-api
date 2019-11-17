@@ -3,7 +3,6 @@ exports.seed = function(knex) {
     .then(function () {
       return knex('songs').insert([
         {
-          id: 1,
           title: 'Superunknown',
           artist: 'Soundgarden',
           resource_url: 'https://storage.googleapis.com/practiceperfect-songs/reve.musicxml',
@@ -13,7 +12,6 @@ exports.seed = function(knex) {
           deleted: false
         },
         {
-          id: 2,
           title: 'Fences',
           artist: 'Paramore',
           resource_url: 'https://storage.googleapis.com/practiceperfect-songs/reve.musicxml',
@@ -23,7 +21,6 @@ exports.seed = function(knex) {
           deleted: false
         },
         {
-          id: 3,
           title: 'Closer',
           artist: 'Nine Inch Nails',
           resource_url: '',
