@@ -9,13 +9,12 @@ const findById = async (id) => {
     try {
         const song = await knex(TABLE).where('id', id);
         return song.length ? song[0] : Boom.notFound();
-    } catch (e) { return Boom.badRequest(); }
+    } catch (e) { return Boom.badRequest(e.message); }
 };
 
 const list = async () => {
     try {
-        const songs = await knex(TABLE).where('deleted', false);
-        return songs.length ? songs : Boom.notFound();
+        return await knex(TABLE).where('deleted', false);
     } catch (e) { return Boom.badRequest(e.message); }
 };
 

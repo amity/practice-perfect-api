@@ -23,7 +23,7 @@ exports.seed = function(knex) {
         {
           title: 'Closer',
           artist: 'Nine Inch Nails',
-          resource_url: '',
+          resource_url: 'https://storage.googleapis.com/practiceperfect-songs/reve.musicxml',
           year: 1994,
           level: 1,
           top_score: 898989,
