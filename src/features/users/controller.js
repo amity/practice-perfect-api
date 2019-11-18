@@ -1,5 +1,10 @@
 'use strict';
 
+const Boom = require('@hapi/boom');
+
+const knex = require('../../../db/knex');
+const TABLE = 'users';
+
 const findById = async (id) => {
     try {
         const user = await knex(TABLE).where('id', id);
