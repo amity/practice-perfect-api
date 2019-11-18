@@ -1,67 +1,66 @@
 'use strict';
 
-const findScore = (user, song) => ({
-    id: 11,
-    user,
-    song,
-    score: 38
-});
+const Boom = require('@hapi/boom');
 
-const listByUser = (userID) => [
-    {
-        id: 1,
-        user: userID,
-        song: 2,
-        score: 38
-    },
-    {
-        id: 2,
-        user: userID,
-        song: 1,
-        score: 78
-    }
-];
+const knex = require('../../../db/knex');
+const TABLE = 'scores';
 
-const listBySong = (songID) => [
-    {
-        id: 1,
-        user: 1,
-        song: songID,
-        score: 38
-    },
-    {
-        id: 2,
-        user: 2,
-        song: songID,
-        score: 78
-    }
-];
+const findScore = async (user, song) => {
+    try {
+        const score = await knex(TABLE).where({user, song});
+        return score.length ? score[0] : Boom.notFound();
+    } catch (e) { return Boom.badRequest(e.message); }
+};
 
-const create = ({user, song, score, mode=0}) => ({
-    id: 9,
-    user,
-    song,
-    score,
-    mode,
-    date: new Date().toISOString().substring(0, 10)  // just date, no time
-});
+const listByUser = async (userID) => {
+    try {
+        return await knex(TABLE).where('user', userID);
+    } catch (e) { return Boom.badRequest(e.message); }
+};
 
-const update = (id, score) => ({
-    id,
-    user: 2,
-    song: 2,
-    score,
-    mode: 0,
-    date: new Date().toISOString().substring(0, 10)  // just date, no time
-});
+const listBySong = async (songID) => {
+    try {
+        return await knex(TABLE).where('song', songID);
+    } catch (e) { return Boom.badRequest(e.message); }
+};
 
-const clear = (user, song) => ({
-    id: 9,
-    user,
-    song,
-    score: 80,
-    deleted: true
-});
+const create = async ({user, song, score, mode=0}) => {
+    try {
+        const newScore = await knex(TABLE)
+            .returning('*')
+            .insert({
+                user,
+                song,
+                score,
+                mode,
+                date: new Date().toISOString().substring(0, 10)  // just date, no time
+            });
+        return newScore.length ? newScore[0] : Boom.badData();
+    } catch (e) { return Boom.badRequest(e.message); }
+};
+
+const update = async (id, score) => {
+    try {
+        const newScore = await knex(TABLE)
+            .returning('*')
+            .where('id', id)
+            .update({
+                score,
+                date: new Date().toISOString().substring(0, 10)  // just date, no time
+            });
+        return newScore.length ? newScore[0] : Boom.badData();
+    } catch (e) { return Boom.badRequest(e.message); }
+};
+
+const clear = async (user, song) => {
+    try {
+        const clearedScore = await knex(TABLE)
+            .returning(['id', 'score'])
+            .where({user, song})
+            .update('score', 0);
+        return clearedScore.length ? clearedScore[0] : Boom.notFound();
+    } catch (e) { return Boom.badRequest(e.message); }
+};
 
 module.exports = {
     findScore,

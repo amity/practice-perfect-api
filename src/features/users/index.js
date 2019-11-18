@@ -19,7 +19,7 @@ const list = {
 const create = {
     method: 'POST',
     path: PATH,
-    handler: ({id, name}, h) => Controller.create(id, name)
+    handler: ({payload}, h) => Controller.create(payload)
 };
 
 const deleteById = {
