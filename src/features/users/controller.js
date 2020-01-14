@@ -18,7 +18,7 @@ const list = async () => {
     } catch (e) { return Boom.badRequest(e.message); }
 };
 
-const create = async ({username, email, password, name, level}) => {
+const create = async ({email, username=email, password, name, level=1}) => {
     try {
         const newUser = await knex(TABLE)
             .returning('*')
@@ -45,9 +45,20 @@ const deleteById = async (id) => {
     } catch (e) { return Boom.badRequest(e.message); }
 };
 
+const login = async (username, password) => {
+    try {
+        const user = await knex(TABLE)
+            .where('username', username)
+            .where('password', password)
+            .where('deleted', false);
+        return user.length ? user[0] : Boom.notFound();
+    } catch (e) { return Boom.badRequest(e.message); }
+};
+
 module.exports = {
     findById,
     list,
     create,
-    deleteById
+    deleteById,
+    login
 };
