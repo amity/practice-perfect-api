@@ -48,9 +48,7 @@ const deleteById = async (id) => {
 const login = async (username, password) => {
     try {
         const user = await knex(TABLE)
-            .where('username', username)
-            .where('password', password)
-            .where('deleted', false);
+            .where({username, password, 'deleted': false});
         return user.length ? user[0] : Boom.notFound();
     } catch (e) { return Boom.badRequest(e.message); }
 };
