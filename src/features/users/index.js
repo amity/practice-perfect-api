@@ -7,7 +7,7 @@ const PATH = '/users';
 const findById = {
     method: 'GET',
     path: PATH + '/{id}',
-    handler: ({id}, h) => Controller.findById(id)
+    handler: ({params: {id}}, h) => Controller.findById(id)
 };
 
 const list = {
@@ -25,9 +25,15 @@ const create = {
 const deleteById = {
     method: 'DELETE',
     path: PATH + '/{id}',
-    handler: ({id}, h) => Controller.deleteById(id)
+    handler: ({params: {id}}, h) => Controller.deleteById(id)
+};
+
+const login = {
+    method: 'GET',
+    path: PATH + '/{user}/{pass}',
+    handler: ({params: {user, pass}}, h) => Controller.login(user, pass)
 };
 
 module.exports = [
-    findById, list, create, deleteById
+    findById, list, create, deleteById, login
 ];
