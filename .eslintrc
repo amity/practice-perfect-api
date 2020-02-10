@@ -6,5 +6,8 @@
     "rules": {
         "semi": "warn",
         "no-multiple-empty-lines": "error"
+    },
+    "env": {
+        "jest": true
     }
 }
