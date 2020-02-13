@@ -2,8 +2,8 @@ const controller = require('../../../src/features/songs/controller');
 const songData   = require('../../../db/seeds/data/songs');
 
 test('findById', async () => {
-  expect(await controller.findById(11)).toMatchObject(songData.find(
-      ({id}) => id == 11)
+  expect(await controller.findById(1)).toMatchObject(songData.find(
+      ({id}) => id == 1)
     );
 });
 
