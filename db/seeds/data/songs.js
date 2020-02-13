@@ -7,7 +7,7 @@ module.exports = [
       level: 1,
       top_score: 898989,
       deleted: false,
-      id: 10
+      id: 1
     },
     {
       title: 'Fences',
@@ -17,7 +17,7 @@ module.exports = [
       level: 1,
       top_score: 898989,
       deleted: false,
-      id: 11
+      id: 2
     },
     {
       title: 'Closer',
@@ -27,6 +27,6 @@ module.exports = [
       level: 1,
       top_score: 898989,
       deleted: false,
-      id: 12
+      id: 3
     }
   ];
