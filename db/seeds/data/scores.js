@@ -4,7 +4,7 @@ module.exports = [
       song: 1,
       score: 98,
       mode: 0,
-      date: '2019-11-14',
+      date: new Date('2019-11-14T05:00:00.000Z'),
       deleted: false
     },
     {
@@ -12,7 +12,7 @@ module.exports = [
       song: 2,
       score: 98,
       mode: 0,
-      date: '2019-11-15',
+      date: new Date('2019-11-15T05:00:00.000Z'),
       deleted: false
     },
     {
@@ -20,7 +20,7 @@ module.exports = [
       song: 1,
       score: 108,
       mode: 0,
-      date: '2019-11-14',
+      date: new Date('2019-11-14T05:00:00.000Z'),
       deleted: false
     }
   ];

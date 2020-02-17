@@ -22,7 +22,7 @@ test('create', async () => {
       password: "password",
       name: "New User",
       level: 1,
-      join_date: new Date('2020-02-10T05:00:00.000Z')
+      join_date: new Date('2020-02-17T05:00:00.000Z')
     };
     const {joinDate, ...createdUser} = await controller.create(newUser);
     newId = createdUser.id;
