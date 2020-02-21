@@ -5,7 +5,7 @@
   "scripts": {
     "lint": "eslint .",
     "start": "nodemon src/server.js",
-    "test": "jest",
+    "test": "jest -i",
     "db:connect": "psql -d practice-perfect-db -h localhost",
     "db:connect:production": "psql -h 34.67.115.95 -U postgres",
     "db:migrate": "knex migrate:latest",
