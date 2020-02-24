@@ -7,7 +7,6 @@ module.exports = [
       join_date: new Date('2019-11-14T05:00:00.000Z'),
       level: 1,
       deleted: false,
-      id: 1
     },
     {
       username: 'abigailychen',
@@ -17,7 +16,6 @@ module.exports = [
       join_date: new Date('2019-11-14T05:00:00.000Z'),
       level: 2,
       deleted: false,
-      id: 2
     },
     {
       username: 'seandartmouth',
@@ -27,7 +25,6 @@ module.exports = [
       join_date: new Date('2019-11-14T05:00:00.000Z'),
       level: 1,
       deleted: false,
-      id: 3
     },
     {
       username: 'a-matusewicz',
@@ -37,6 +34,5 @@ module.exports = [
       join_date: new Date('2019-11-14T05:00:00.000Z'),
       level: 3,
       deleted: false,
-      id: 4
     }
   ];
