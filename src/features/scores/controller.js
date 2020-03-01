@@ -35,7 +35,7 @@ const create = async ({user, song, score, mode=0}) => {
                 mode,
                 date: new Date().toISOString().substring(0, 10)  // just date, no time
             });
-        return newScore.length ? newScore[0] : Boom.badData();
+        return newScore[0];
     } catch (e) { return Boom.badRequest(e.message); }
 };
 
