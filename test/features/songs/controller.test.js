@@ -1,5 +1,7 @@
 'use strict';
 
+const Boom = require('@hapi/boom');
+
 const controller = require('../../../src/features/songs/controller');
 const knex       = require('../../../db/knex');
 const songData   = require('../../../db/seeds/data/songs');
@@ -17,17 +19,32 @@ describe('Songs Controller testing', () => {
         knex.destroy(done);
     });
 
-    test('findById', async () => {
-        expect(await controller.findById(1)).toMatchObject(songData[0]);
+    describe('findbyId', () => {
+        test('return song by ID', async () => {
+            expect(await controller.findById(1)).toMatchObject(songData[0]);
+        });
+
+        test('fails safely when searching for a nonexistent song', async () => {
+            const songId = 100;
+            expect(await controller.findById(songId)).toMatchObject(Boom.notFound());
+        });
+
+        test('handles other errors', async () => {
+            const songId = false;
+            const {output} = await controller.findById(songId);
+            expect(output.statusCode).toEqual(400);
+        });
     });
 
-    test('list', async () => {
-        expect(await controller.list()).toMatchObject(songData);
+    describe('list', () => {
+        test('return all songs', async () => {
+            expect(await controller.list()).toMatchObject(songData);
+        });
     });
 
     let newId;
 
-    test('create', async () => {
+    describe('create', () => {
         const newSong = {
             title: "New Song",
             artist: "New Artist",
@@ -36,15 +53,35 @@ describe('Songs Controller testing', () => {
             level: 1,
             top_score: 100
         };
-        const createdSong = await controller.create(newSong);
-        newId = createdSong.id;
-        expect(createdSong).toMatchObject(newSong);
+
+        test('adds a new song', async () => {
+            const createdSong = await controller.create(newSong);
+            newId = createdSong.id;
+            expect(createdSong).toMatchObject(newSong);
+        });
+
+        test('handles errors', async () => {
+            const {output} = await controller.create({title: {abcd: 'haha'}});
+            expect(output.statusCode).toEqual(400);
+        });
     });
 
-    test('deleteById', async () => {
-        expect(await controller.deleteById(newId)).toMatchObject(
-            {id: newId, title: "New Song", deleted: true}
-        );
+    describe('deleteById', () => {
+        test('soft-deletes a song with the given ID', async () => {
+            expect(await controller.deleteById(newId)).toMatchObject(
+                {id: newId, title: "New Song", deleted: true}
+            );
+        });
+
+        test('fails safely when deleting a nonexistent song', async () => {
+            const updatedScore = await controller.deleteById(800);
+            expect(updatedScore).toMatchObject(Boom.notFound());
+        });
+
+        test('handles other errors', async () => {
+            const {output} = await controller.deleteById({abcd: 'haha'});
+            expect(output.statusCode).toEqual(400);
+        });
     });
 
 });
