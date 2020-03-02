@@ -12,11 +12,7 @@ const findById = async (id) => {
     } catch (e) { return Boom.badRequest(e.message); }
 };
 
-const list = async () => {
-    try {
-        return await knex(TABLE).where('deleted', false);
-    } catch (e) { return Boom.badRequest(e.message); }
-};
+const list = async () => await knex(TABLE).where('deleted', false);
 
 const create = async ({title, artist, resource_url, year, level, top_score}) => {
     try {
@@ -30,7 +26,7 @@ const create = async ({title, artist, resource_url, year, level, top_score}) => 
                 level,
                 top_score
             });
-        return song.length ? song[0] : Boom.badData();
+        return song[0];
     } catch (e) { return Boom.badRequest(e.message); }
 };
 

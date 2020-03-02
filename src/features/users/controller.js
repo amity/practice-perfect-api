@@ -12,11 +12,7 @@ const findById = async (id) => {
     } catch (e) { return Boom.badRequest(e.message); }
 };
 
-const list = async () => {
-    try {
-        return await knex(TABLE).where('deleted', false);
-    } catch (e) { return Boom.badRequest(e.message); }
-};
+const list = async () => await knex(TABLE).where('deleted', false);
 
 const create = async ({email, username=email, password, name, level=1}) => {
     try {
@@ -31,7 +27,7 @@ const create = async ({email, username=email, password, name, level=1}) => {
                 deleted: false,
                 join_date: new Date().toISOString().substring(0, 10)  // just date, no time
             });
-        return newUser.length ? newUser[0] : Boom.badData();
+        return newUser[0];
     } catch (e) { return Boom.badRequest(e.message); }
 };
 
